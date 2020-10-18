@@ -29,20 +29,17 @@ class ViewController: UIViewController {
     
     
     @IBAction func redSliderAction() {
-        redColor = CGFloat(redSlider.value)
-        redNumbers.text = String(format: "%.2f", redSlider.value)
+        sliderActivity(color: &redColor, slider: redSlider, sliderNumbers: &redNumbers)
         coloring()
     }
     
     @IBAction func greenSliderAction() {
-        greenColor = CGFloat(greenSlider.value)
-        greenNumbers.text = String(format: "%.2f", greenSlider.value)
+        sliderActivity(color: &greenColor, slider: greenSlider, sliderNumbers: &greenNumbers)
         coloring()
     }
     
     @IBAction func blueSliderAction() {
-        blueColor = CGFloat(blueSlider.value)
-        blueNumbers.text = String(format: "%.2f", blueSlider.value)
+        sliderActivity(color: &blueColor, slider: blueSlider, sliderNumbers: &blueNumbers)
         coloring()
     }
     
@@ -50,6 +47,10 @@ class ViewController: UIViewController {
         viewColors.backgroundColor = UIColor(displayP3Red: redColor, green: greenColor, blue: blueColor, alpha: 1)
     }
     
+    private func sliderActivity( color: inout CGFloat, slider: UISlider, sliderNumbers: inout UILabel) {
+        color = CGFloat(slider.value)
+        sliderNumbers.text = String(format: "%.2f", slider.value)
+    }
 }
 
 
